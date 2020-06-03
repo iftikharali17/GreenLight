@@ -1,12 +1,49 @@
+import "react-native-gesture-handler";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
+
+function login({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text style={green.colors}>This is the login</Text>
+      <Button
+        title="Landing Page"
+        onPress={() => navigation.navigate("Home")}
+      />
+    </View>
+  );
+}
+
+function signup({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text style={green.colors}>This is the Singup</Text>
+      <Button title="Login" onPress={() => navigation.navigate("Login")} />
+    </View>
+  );
+}
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={green.colors}> Shits gone real. </Text>
-      <Text style={green.colors}> wHere you at Ifti </Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Signup">
+        <Stack.Screen name="Signup" component={signup} />
+        <Stack.Screen name="Login" component={login} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
