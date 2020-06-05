@@ -3,6 +3,7 @@ import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import Signupform from "./components/signupform";
 
 function HomeScreen({ navigation }) {
   return (
@@ -27,8 +28,21 @@ function login({ navigation }) {
 function signup({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={green.colors}>This is the Singup</Text>
-      <Button title="Login" onPress={() => navigation.navigate("Login")} />
+      <Text style={green.colors}>This is the Signup</Text>
+      <Button title="Signup" onPress={() => navigation.navigate("Signupnav")} />
+     
+    </View>
+  );
+}
+
+function signupnav({ navigation }) {
+  return (
+    <View style={styles.container}>
+     <Signupform />
+     <Button
+        title="Submit"
+        onPress={() => navigation.navigate("Login")}
+        />
     </View>
   );
 }
@@ -42,6 +56,7 @@ export default function App() {
         <Stack.Screen name="Signup" component={signup} />
         <Stack.Screen name="Login" component={login} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Signupnav" component={signupnav} />
       </Stack.Navigator>
     </NavigationContainer>
   );
