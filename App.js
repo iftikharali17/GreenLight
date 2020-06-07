@@ -1,14 +1,18 @@
 import "react-native-gesture-handler";
-import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Signupform from "./components/signupform";
+import LoginForm from "./components/loginform";
+import axios from "axios";
+import React, { useState } from "react";
 
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
+      <Button title="Login" onPress={() => navigation.navigate("Login")} />
+      <Button title="Signup" onPress={() => navigation.navigate("Signup")} />
     </View>
   );
 }
@@ -16,11 +20,7 @@ function HomeScreen({ navigation }) {
 function login({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={green.colors}>This is the login</Text>
-      <Button
-        title="Landing Page"
-        onPress={() => navigation.navigate("Home")}
-      />
+      <LoginForm />
     </View>
   );
 }
@@ -28,21 +28,7 @@ function login({ navigation }) {
 function signup({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={green.colors}>This is the Signup</Text>
-      <Button title="Signup" onPress={() => navigation.navigate("Signupnav")} />
-     
-    </View>
-  );
-}
-
-function signupnav({ navigation }) {
-  return (
-    <View style={styles.container}>
-     <Signupform />
-     <Button
-        title="Submit"
-        onPress={() => navigation.navigate("Login")}
-        />
+      <Signupform />
     </View>
   );
 }
@@ -52,11 +38,10 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Signup">
-        <Stack.Screen name="Signup" component={signup} />
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Login" component={login} />
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Signupnav" component={signupnav} />
+        <Stack.Screen name="Signup" component={signup} />
       </Stack.Navigator>
     </NavigationContainer>
   );
