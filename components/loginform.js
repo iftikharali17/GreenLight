@@ -33,8 +33,9 @@ const LoginForm = ({ navigation }) => {
     try {
       let token = await AsyncStorage.setItem("value", authtoken);
       console.log(authtoken);
+      navigation.navigate("PatientView");
     } catch (e) {
-      // saving error
+      console.log(e);
     }
   };
 

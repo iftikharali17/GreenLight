@@ -28,7 +28,7 @@ function HomeScreen({ navigation }) {
 function login({ navigation }) {
   return (
     <View style={styles.container}>
-      <LoginForm navigation={navigation.navigate("patientView")} />
+      <LoginForm navigation={navigation} />
     </View>
   );
 }
