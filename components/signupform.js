@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Button, Text, TextInput, StyleSheet } from "react-native";
 import axios from "axios";
-import querystring from "querystring";
+
 const SignupForm = () => {
   const [value, setValue] = useState({
     firstName: "",
@@ -23,7 +23,7 @@ const SignupForm = () => {
       email: value.email,
       password: value.password,
       last_name: value.lastName,
-      dob: value.dob,
+      dob: new Date(value.dob),
       mobile_number: value.phoneNr,
     };
 
@@ -32,11 +32,7 @@ const SignupForm = () => {
     };
 
     axios
-      .post(
-        "http://localhost/:2000/signup/create/patient",
-        querystring.stringify(mydata),
-        headers
-      )
+      .post("http://localhost:2000/signup/create/patient", mydata, headers)
 
       .then(function (response) {
         // handle success
@@ -86,7 +82,7 @@ const SignupForm = () => {
         />
         <TextInput
           style={styles.input}
-          placeholder="Date of Birth"
+          placeholder="YYYY-MM-DD"
           value={value.dob}
           onChange={(e) => setValue({ ...value, dob: e.target.value })}
         />

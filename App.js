@@ -1,11 +1,19 @@
 import "react-native-gesture-handler";
+import React, { useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Signupform from "./components/signupform";
 import LoginForm from "./components/loginform";
-import axios from "axios";
-import React, { useState } from "react";
+import LandingPage from "./components/LandingPage";
+
+function patientView({ navigation }) {
+  return (
+    <View>
+      <LandingPage />
+    </View>
+  );
+}
 
 function HomeScreen({ navigation }) {
   return (
@@ -20,7 +28,7 @@ function HomeScreen({ navigation }) {
 function login({ navigation }) {
   return (
     <View style={styles.container}>
-      <LoginForm />
+      <LoginForm navigation={navigation.navigate("patientView")} />
     </View>
   );
 }
@@ -42,6 +50,7 @@ export default function App() {
         <Stack.Screen name="Login" component={login} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Signup" component={signup} />
+        <Stack.Screen name="PatientView" component={patientView} />
       </Stack.Navigator>
     </NavigationContainer>
   );
