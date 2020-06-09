@@ -6,11 +6,20 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Signupform from "./components/signupform";
 import LoginForm from "./components/loginform";
 import LandingPage from "./components/LandingPage";
+import DoctorDetails from "./Views/Card";
+
+function DoctorCard() {
+  return (
+    <View>
+      <DoctorDetails />
+    </View>
+  );
+}
 
 function patientView({ navigation }) {
   return (
     <View>
-      <LandingPage />
+      <LandingPage navigation={navigation} />
     </View>
   );
 }
@@ -36,7 +45,7 @@ function login({ navigation }) {
 function signup({ navigation }) {
   return (
     <View style={styles.container}>
-      <Signupform />
+      <Signupform navigation={navigation} />
     </View>
   );
 }
@@ -51,6 +60,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Signup" component={signup} />
         <Stack.Screen name="PatientView" component={patientView} />
+        <Stack.Screen name="DoctorCard" component={DoctorCard} />
       </Stack.Navigator>
     </NavigationContainer>
   );

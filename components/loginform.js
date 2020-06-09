@@ -39,14 +39,14 @@ const LoginForm = ({ navigation }) => {
     }
   };
 
-  const displayData = async () => {
-    try {
-      let user = await AsyncStorage.getItem("user");
-      alert(user);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const displayData = async () => {
+  //   try {
+  //     let user = await AsyncStorage.getItem("user");
+  //     alert(user);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <View>

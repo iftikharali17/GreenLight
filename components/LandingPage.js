@@ -10,13 +10,17 @@ import {
   SafeAreaView,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import ChildForm from "../Views/PatientView";
+import MainView from "../Views/MainView";
 import Header from "../Views/headers";
+import Footer from "../Views/footer";
 
-const LandingPage = () => {
+const LandingPage = ({ navigation }) => {
   const [doctors, setDoctors] = useState([]);
   const hallos = () => {
     console.log("hallo");
+  };
+  const shipit = () => {
+    navigation.navigate("DoctorCard");
   };
 
   useEffect(() => {
@@ -39,9 +43,14 @@ const LandingPage = () => {
       <FlatList
         data={doctors}
         renderItem={({ item }) => (
-          <ChildForm email={item.email} hallo="Du bist in der muschi" />
+          <MainView
+            email={item.email}
+            hallo="Du bist in der muschi"
+            cards={shipit}
+          />
         )}
       />
+      <Footer />
     </View>
   );
 };

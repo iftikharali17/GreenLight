@@ -1,15 +1,16 @@
 import React from "react";
 import { View, Button, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
-const childForm = ({ email, hallo }) => {
+const MainForm = ({ email, hallo, cards }) => {
   return (
     <View style={styles.Item}>
       <View style={styles.ItemView}>
         <Text onPress={() => console.log({ hallo })} style={styles.ItemText}>
           {email}
         </Text>
+        <Button title="Cards" onPress={cards} />
       </View>
     </View>
   );
@@ -37,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default childForm;
+export default MainForm;

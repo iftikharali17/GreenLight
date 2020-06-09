@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, Button, Text, TextInput, StyleSheet } from "react-native";
+import { View, Button, Text, TextInput, StyleSheet, Alert } from "react-native";
 import axios from "axios";
 
-const SignupForm = () => {
+const SignupForm = ({ navigation }) => {
   const [value, setValue] = useState({
     firstName: "",
     lastName: "",
@@ -37,7 +37,12 @@ const SignupForm = () => {
       .then(function (response) {
         // handle success
         console.log(response);
-        alert("Data Send");
+        Alert.alert("Successful", "Patient created sucessfully", {
+          text: "To the doctors",
+        });
+        setTimeout(() => {
+          navigation.navigate("PatientView");
+        }, 10000);
       })
       .catch(function (error) {
         // handle error
