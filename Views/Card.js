@@ -5,6 +5,7 @@ const DoctorDetails = () => {
   return (
     <View>
       <Text>Adressen usw</Text>
+      <Text>Ein Knopf , wer klopft?</Text>
     </View>
   );
 };
