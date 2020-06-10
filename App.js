@@ -1,12 +1,13 @@
 import "react-native-gesture-handler";
 import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Signupform from "./components/signupform";
 import LoginForm from "./components/loginform";
 import LandingPage from "./components/LandingPage";
-import DoctorDetails from "./Views/Card";
+import DoctorDetails from "./Views/Card"; 
 
 function DoctorCard() {
   return (
