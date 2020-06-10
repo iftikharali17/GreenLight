@@ -1,0 +1,23 @@
+.color-text {
+    color:#B3B8CD;
+}
+
+.left-margin {
+    margin-left: 34px;
+}
+
+.link-margin {
+    margin-left: 10px;
+}
+
+.bg-color {
+    background-color: #28223F;
+}
+
+a:hover {
+    color: white ;
+}
+
+a {
+    color: #B3B8CD;
+}
