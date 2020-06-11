@@ -76,7 +76,7 @@ const green = StyleSheet.create({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: "#29332F",
     alignItems: "center",
     justifyContent: "center",
   },
