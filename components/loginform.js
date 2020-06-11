@@ -90,6 +90,9 @@ export default LoginForm;
 const styles = StyleSheet.create({
   title: {
     fontFamily: Fonts.KaushanScript,
+    textAlign: 'center',
+    padding: 15,
+    marginRight: 28,
     color: "white",
     fontSize: 24,
   },
@@ -113,7 +116,7 @@ const styles = StyleSheet.create({
   inputs:{
       height:45,
       marginLeft:16,
-      borderBottomColor: '#FFFFFF',
+      borderBottomColor: '#e327e3',
       flex:1,
   },
   inputIcon:{
