@@ -38,12 +38,15 @@ const LandingPage = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Header title="Doctors" />
+    <ScrollView>
+    <View >
+      <View style={styles.header}>
+      <Header style={{backgroundColor:'#00b5ec'}} title="Doctors" />
+      </View>
       <FlatList
         data={doctors}
         renderItem={({ item }) => (
-          <MainView
+          <MainView style={styles.header}
             email={item.email}
             hallo="Du bist in der muschi"
             cards={shipit}
@@ -52,14 +55,19 @@ const LandingPage = ({ navigation }) => {
       />
       <Footer />
     </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "green",
+    backgroundColor: "#29332F",
   },
+  header: {
+    backgroundColor:"#00b5ec",
+    color: "00b5ec"
+  }
 });
 
 export default LandingPage;
