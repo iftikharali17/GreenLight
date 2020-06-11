@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Image, TouchableHighlight, Button, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Signupform from "./components/signupform";
@@ -27,10 +27,23 @@ function patientView({ navigation }) {
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
-      <Button title="Login" onPress={() => navigation.navigate("Login")} />
-      <Button title="Signup" onPress={() => navigation.navigate("Signup")} />
+    <View style={styles.container}>
+      <View >
+        <Image style={styles.inputIcon} source={require('e:/Full-stack-course/GreenLight/assets/images/logo.png')}/>
+        <br></br>
+      </View>
+      <View >
+        <TouchableHighlight style={styles.buttonContainer} 
+          onPress={() => navigation.navigate("Login")}>
+        <Text style={styles.buttonText}>LOGIN</Text>
+        </TouchableHighlight>
+      </View>
+      <View >
+        <TouchableHighlight style={styles.buttonContainer} 
+          onPress={() => navigation.navigate("Signup")}>
+        <Text style={styles.buttonText}>SIGN UP</Text>
+        </TouchableHighlight>
+      </View>
     </View>
   );
 }
@@ -80,4 +93,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  buttonContainer: {
+    backgroundColor:"#00b5ec",
+    height:45,
+    padding: 30,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+    important: 'true'
+  },
+  buttonText: {
+    color: 'white',
+  },
+  inputIcon:{
+    width:200,
+    height:200,
+    borderRadius: 30,
+    justifyContent: 'center',
+  }
 });
