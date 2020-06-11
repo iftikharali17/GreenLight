@@ -6,7 +6,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 const LoginForm = ({ navigation }) => {
   const [value, setValue] = useState({ email: "", password: "" });
 
-  const handlePress = () => {
+  const handlePress = async () => {
     const mydata = {
       email: value.email,
       password: value.password,
@@ -16,8 +16,12 @@ const LoginForm = ({ navigation }) => {
       "Content-Type": "application/x-www-form-urlencoded",
     };
 
-    axios
-      .post("http://localhost:2000/login", mydata, headers)
+    await axios
+      .post(
+        "https://backontrackgreenlight.herokuapp.com/login",
+        mydata,
+        headers
+      )
 
       .then(function (response) {
         // handle success
