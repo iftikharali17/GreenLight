@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Button, Text, TextInput, StyleSheet } from "react-native";
+import { View, Image, TouchableHighlight, Button, Text, TextInput, StyleSheet } from "react-native";
+import {Fonts} from "./Fonts.js";
 import axios from "axios";
 import AsyncStorage from "@react-native-community/async-storage";
 
@@ -50,23 +51,35 @@ const LoginForm = ({ navigation }) => {
 
   return (
     <View>
-      <Text style={styles.title}>LogIn</Text>
       <View>
+        <Text style={styles.title}>Login</Text>
+      </View>
+      <View>
+        <View style={styles.inputContainer}>
+        <Image style={styles.inputIcon} source={{uri: 'https://img.icons8.com/doodle/48/000000/mail-contact.png'}}/>
         <TextInput
-          style={styles.input}
-          placeholder="Email"
+          style={styles.inputs}
+          placeholder=" Email"
+          underlineColorAndroid='transparent'
           value={value.email}
           onChange={(e) => setValue({ ...value, email: e.target.value })}
         />
+        </View>
+        <View style={styles.inputContainer}>
+        <Image style={styles.inputIcon} source={{uri: 'https://img.icons8.com/plasticine/100/000000/key.png'}}/>
         <TextInput
-          style={styles.input}
+          style={styles.inputs}
           secureTextEntry={true}
           placeholder="Password"
+          underlineColorAndroid='transparent'
           value={value.password}
           onChange={(e) => setValue({ ...value, password: e.target.value })}
         />
-
-        <Button title="onpress" onPress={handlePress} />
+        </View>
+        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} 
+        onPress={handlePress}>
+        <Text style={styles.loginText}>Login</Text>
+        </TouchableHighlight>
       </View>
     </View>
   );
@@ -76,23 +89,52 @@ export default LoginForm;
 
 const styles = StyleSheet.create({
   title: {
+    fontFamily: Fonts.KaushanScript,
     color: "white",
     fontSize: 24,
   },
-  input: {
-    width: 350,
-    height: 55,
-    backgroundColor: "#42A5F5",
-    margin: 10,
-    padding: 8,
-    color: "white",
-    borderRadius: 14,
-    fontSize: 18,
-    fontWeight: "500",
-  },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#DCDCDC',
   },
+  inputContainer: {
+      borderBottomColor: '#F5FCFF',
+      backgroundColor: '#E2E0DB',
+      borderRadius:30,
+      borderBottomWidth: 1,
+      width:250,
+      height:45,
+      marginBottom:20,
+      flexDirection: 'row',
+      alignItems:'center'
+  },
+  inputs:{
+      height:45,
+      marginLeft:16,
+      borderBottomColor: '#FFFFFF',
+      flex:1,
+  },
+  inputIcon:{
+    width:30,
+    height:30,
+    marginLeft:15,
+    justifyContent: 'center'
+  },
+  buttonContainer: {
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+  },
+  loginButton: {
+    backgroundColor: "#00b5ec",
+  },
+  loginText: {
+    color: 'white',
+  }
 });
