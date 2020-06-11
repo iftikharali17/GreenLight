@@ -3,52 +3,57 @@ import { View, TouchableHighlight, Text, TextInput, StyleSheet, Alert } from "re
 import axios from "axios";
 
 const SignupForm = ({ navigation }) => {
-  const [value, setValue] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    passwordeval: "",
-    dob: "",
-    insuranceComp: "",
-    insuranceNr: "",
-    phoneNr: "",
-  });
-
-  const handlechange = () => {
-    const mydata = {
-      first_name: value.firstName,
-      insurance_company: value.insuranceComp,
-      insurance_number: value.insuranceNr,
-      email: value.email,
-      password: value.password,
-      last_name: value.lastName,
-      dob: new Date(value.dob),
-      mobile_number: value.phoneNr,
-    };
-
-    const headers = {
-      "Content-Type": "application/x-www-form-urlencoded",
-    };
-
-    axios
-      .post("http://localhost:2000/signup/create/patient", mydata, headers)
-
-      .then(function (response) {
-        // handle success
-        console.log(response);
-        Alert.alert("Successful", "Patient created sucessfully", {
-          text: "To the doctors",
+    const [value, setValue] = useState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      passwordeval: "",
+      dob: "",
+      insuranceComp: "",
+      insuranceNr: "",
+      phoneNr: "",
+    });
+  
+    const handlechange = () => {
+      const mydata = {
+        first_name: value.firstName,
+        insurance_company: value.insuranceComp,
+        insurance_number: value.insuranceNr,
+        email: value.email,
+        password: value.password,
+        last_name: value.lastName,
+        dob: new Date(value.dob),
+        mobile_number: value.phoneNr,
+      };
+  
+      const headers = {
+        "Content-Type": "application/x-www-form-urlencoded",
+      };
+  
+      axios
+        .post(
+          "https://backontrackgreenlight.herokuapp.com/signup/create/patient",
+          mydata,
+          headers
+        )
+  
+        .then(function (response) {
+          // handle success
+          console.log(response);
+          Alert.alert("Successful", "Patient created sucessfully", {
+            text: "To the doctors",
+          });
+          setTimeout(() => {
+            navigation.navigate("PatientView");
+          }, 10000);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
         });
-        setTimeout(() => {
-          navigation.navigate("PatientView");
-        }, 10000);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-  };
+    };
+  
   return (
     <View>
       <View>

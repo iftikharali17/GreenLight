@@ -22,19 +22,20 @@ const LandingPage = ({ navigation }) => {
   const shipit = () => {
     navigation.navigate("DoctorCard");
   };
+  async function fetchhData() {
+    try {
+      const response = await axios.get(
+        "https://backontrackgreenlight.herokuapp.com/all"
+      );
+      setDoctors(response.data);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
-    axios
-      .get("http://localhost:2000/all")
-
-      .then(function (response) {
-        // handle success
-        setDoctors(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
+    fetchhData();
   }, []);
 
   return (

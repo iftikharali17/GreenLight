@@ -7,7 +7,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 const LoginForm = ({ navigation }) => {
   const [value, setValue] = useState({ email: "", password: "" });
 
-  const handlePress = () => {
+  const handlePress = async () => {
     const mydata = {
       email: value.email,
       password: value.password,
@@ -17,12 +17,18 @@ const LoginForm = ({ navigation }) => {
       "Content-Type": "application/x-www-form-urlencoded",
     };
 
-    axios
-      .post("http://localhost:2000/login", mydata, headers)
+    await axios
+      .post(
+        "https://backontrackgreenlight.herokuapp.com/login",
+        mydata,
+        headers
+      )
 
       .then(function (response) {
-        // handle success
-        storeData(response.data);
+        // handle successc
+        console.log(response);
+        // storeData(response.data);      Later usage with async storage
+        navigation.navigate("PatientView");
       })
       .catch(function (error) {
         // handle error
@@ -30,15 +36,17 @@ const LoginForm = ({ navigation }) => {
       });
   };
 
-  const storeData = async (authtoken) => {
-    try {
-      let token = await AsyncStorage.setItem("value", authtoken);
-      console.log(authtoken);
-      navigation.navigate("PatientView");
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // Final version will have this included
+
+  // const storeData = async (authtoken) => {
+  //   try {
+  //     let token = await AsyncStorage.setItem("value", authtoken);
+  //     console.log(authtoken);
+  //     navigation.navigate("PatientView");
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   // const displayData = async () => {
   //   try {
