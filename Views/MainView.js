@@ -10,7 +10,7 @@ const MainForm = ({ email, hallo, cards }) => {
         <Text onPress={() => console.log({ hallo })} style={styles.ItemText}>
           {email}
         </Text>
-        <Button title="Cards" onPress={cards} />
+        <Button title="More Info" onPress={cards} />
       </View>
     </View>
   );

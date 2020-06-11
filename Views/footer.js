@@ -1,11 +1,12 @@
 import React from "react";
-import { View, Text, Button, TextInput, StyleSheet } from "react-native";
+import { View, Image, Text, Button, TextInput, StyleSheet } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 const Footer = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.footer}>Placeholder</Text>
+      <Image style={styles.inputIcon} source={require('e:/Full-stack-course/GreenLight/assets/images/calendar.png')}/>
+      <Image style={styles.inputIcon} source={require('e:/Full-stack-course/GreenLight/assets/images/gear.png')}/>
     </View>
   );
 };
@@ -13,16 +14,22 @@ const Footer = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: "darkslateblue",
+    backgroundColor: "#00b5ec",
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
   },
   footer: {
-    color: "#fff",
-    fontSize: 23,
+    color: "white",
+    fontSize: 24,
     alignItems: "center",
   },
+  inputIcon:{
+    width:40,
+    height:40,
+    // borderRadius: 30,
+    justifyContent: 'center',
+  }
 });
 
 export default Footer;

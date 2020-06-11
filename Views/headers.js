@@ -13,12 +13,12 @@ const Header = ({ title }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: "darkslateblue",
+    backgroundColor: "#00b5ec",
     alignItems: "center",
   },
   header: {
-    color: "#fff",
-    fontSize: 23,
+    color: "white",
+    fontSize: 24,
   },
 });
 
